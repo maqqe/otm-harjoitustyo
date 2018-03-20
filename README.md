@@ -1,3 +1,5 @@
+Lisäsin tämän tekstin terminaalissa, jotta voin harjoitella git pushia
+
 Lisäsin tämän tekstin githubissa, jotta voin harjoitella git pullia terminaalissa
 
 
