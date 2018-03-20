@@ -1,0 +1,113 @@
+commit bcde4f69e4cc2ff5a13a053ccca534ac2b327714
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:27:12 2018 +0200
+
+    file1 poistettu, file2 -> file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 1e8012fe25a70f55aabaf3ec5c016d1cb9d31802
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:24:27 2018 +0200
+
+    tiedostoja lisätty, filet 1-3 lisätty tiedostoon
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 03ff1dd39df35f8fd9ecab6ad1314110b17f4b49
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:19:52 2018 +0200
+
+    tiedostoja eka.txt ja kolmas.txt muokattu
+
+ eka.txt    | 8 ++++++--
+ kolmas.txt | 5 ++++-
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+commit c7c3090f448ce842a310a96bb197c1760b17fd84
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:17:14 2018 +0200
+
+    tiedosto.txt -> eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 64d1b72fd7e4fc366d72e66c5bf74d024b0b1f64
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:16:19 2018 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 1bf85145c05634658ee3f7d6b5a911ac8f1a53f2
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:14:50 2018 +0200
+
+    tiedosto.txt muokattu taas
+
+ tiedosto.txt | 46 ++++++++++++++++++++++++++++++----------------
+ 1 file changed, 30 insertions(+), 16 deletions(-)
+
+commit 1c59a870b0368b5d79216d028ef9748a379d2499
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:13:17 2018 +0200
+
+    tiedosto.txt muokattu
+
+ tiedosto.txt | 74 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
+
+commit b177ede531c3017764abb669a11fc89c9efc08df
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:01:47 2018 +0200
+
+    stuff -kansio lisätty
+
+ stuff/jotain.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8befda4d844e6537151132e59bb260eca7b1fa39
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 18:00:37 2018 +0200
+
+    muokattua toinen.txt ja kolmas.txt
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit cfb0dcc0d88032cdce1614d04fc395fcb778edc7
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 17:59:22 2018 +0200
+
+    kolmas.txt lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 5248678e34f33fb7d205ec243a7aa000f02f842e
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 17:54:54 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 33849935c012de969b49c4d45d824031d4efd03c
+Author: maqqe <mkeskitalo@gmail.com>
+Date:   Tue Mar 20 17:51:58 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
