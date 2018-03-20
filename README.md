@@ -1,3 +1,11 @@
+# linkit
+
+[komentorivi.txt](https://github.com/maqqe/otm-harjoitustyo/tree/master/laskarit/viikko1/komentorivi.txt)
+
+[gitlog.txt](https://github.com/maqqe/otm-harjoitustyo/tree/master/laskarit/viikko1/gitlog.txt)
+
+
+
 # hieno otsikko
 
 tavallista tekstiä
