@@ -1,3 +1,6 @@
+Lisäsin tämän tekstin githubissa, jotta voin harjoitella git pullia terminaalissa
+
+
 # linkit
 
 [komentorivi.txt](https://github.com/maqqe/otm-harjoitustyo/tree/master/laskarit/viikko1/komentorivi.txt)
