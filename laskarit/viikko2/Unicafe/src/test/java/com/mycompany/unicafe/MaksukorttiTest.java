@@ -34,8 +34,7 @@ public class MaksukorttiTest {
     public void saldoVaheneeOikeinJosRahaaTarpeeksi() {
         kortti.otaRahaa(9);
         assertEquals("saldo: 0.1", kortti.toString());
-        // 0.1 ei tietenkään ole tässä looginen vastaus, vaan 0.01. Jacoco ei kuitenkaan
-        // suostunut luomaan reporttia, jos testit eivät menneet läpi.
+        // 0.1 ei tietenkään ole tässä ehkä se looginen vastaus, vaan 0.01. 
     }
     
     @Test
