@@ -14,6 +14,28 @@ A game about drinking beer and crushing your enemies while you're at it.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Viikon 1 laskarisettejä
 
 ## linkit
