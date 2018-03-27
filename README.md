@@ -1,11 +1,22 @@
-Tämä teksti on tässä, jotta repositiot epäsynkronisoituvat
+# Bar Fight Simulator
 
-Lisäsin tämän tekstin terminaalissa, jotta voin harjoitella git pushia
-
-Lisäsin tämän tekstin githubissa, jotta voin harjoitella git pullia terminaalissa
+A game about drinking beer and crushing your enemies while you're at it.
 
 
-# linkit
+## Dokumentaatio
+
+[Vaatimusmäärittely](https://github.com/maqqe/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
+[Työaikakirjanpito](https://github.com/maqqe/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
+
+
+
+
+
+# Viikon 1 laskarisettejä
+
+## linkit
 
 [komentorivi.txt](https://github.com/maqqe/otm-harjoitustyo/tree/master/laskarit/viikko1/komentorivi.txt)
 
@@ -13,7 +24,7 @@ Lisäsin tämän tekstin githubissa, jotta voin harjoitella git pullia terminaal
 
 
 
-# hieno otsikko
+## hieno otsikko
 
 tavallista tekstiä
 
