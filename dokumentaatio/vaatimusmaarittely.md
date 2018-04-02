@@ -14,23 +14,6 @@ Sovellus koostuu yhdestä näkymästä, joka sisältää pelialueen, mahdollista
 
 
 
-|---------------/ ------|  
-|           |           |  
-|   @       |           |  
-|           |   V V     |  <- pelialue  
-|   |  V                |  
-|   |                   |  
-|-----------------------|  
-|vuoro 5                |  <- tietolaatikko  
-|-----------------------|
-| Osuit Daveen!         |
-| Dave joi oluen!       |  <- tekstialue
-| ...ja muita viestejä  |
-|-----------------------|
-
-
-
-
 ## Perusversion toiminnallisuus
 
 * Peli on pelattavissa
