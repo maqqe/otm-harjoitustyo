@@ -2,6 +2,8 @@ package barfightsimulator;
 
 import barfightsimulator.domain.Enemy;
 import barfightsimulator.domain.Player;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -40,19 +42,27 @@ public class MainApp {
         System.out.println("hi");
         Player p = new Player(0, 0);
         System.out.println(p);
-        p.move(1, 0);
-        System.out.println(p);
         
-        Enemy e = new Enemy(3, 8, p);
-        System.out.println(e);
-        e.move(p.x, p.y);
-        System.out.println(e);
-        e.move(p.x, p.y);
-        System.out.println(e);
-        e.move(p.x, p.y);
-        System.out.println(e);
-        e.move(p.x, p.y);
-        System.out.println(e);
+        System.out.println("");
+        System.out.println("Enemy moves: ");
+        
+        Enemy e1 = new Enemy(3, 8, p);
+        Enemy e2 = new Enemy(1, 1, p);
+        
+        List<Enemy> enemies = new ArrayList<>();
+        
+        enemies.add(e2);
+        enemies.add(e1);
+        
+        for (int i = 0; i < 5; i++) {
+            for (Enemy e : enemies) {
+                e.move(p.x, p.y);
+                System.out.println(e);
+            }
+        }
+        
+                
+        
     }
 
 }

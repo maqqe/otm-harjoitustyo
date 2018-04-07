@@ -60,4 +60,21 @@ public class PlayerTest {
         player.move(1, 0);
         assertEquals(player.getX(), 1);
     }
+    
+    @Test
+    public void setXCorrectlySetsX() {
+        player.setX(3);
+        assertEquals(player.getX(), 3);
+    }
+    
+    @Test
+    public void setYCorrectlySetsY() {
+        player.setY(3);
+        assertEquals(player.getY(), 3);
+    }
+    
+    @Test
+    public void toStringReturnsCorrectString() {
+        assertEquals(player.toString(), "[0, 0]");
+    }
 }

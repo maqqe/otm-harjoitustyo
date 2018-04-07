@@ -18,7 +18,7 @@ public class Enemy extends Character {
         this.player = player;
     }
     
-    @Override
+    
     public void move(int x, int y) {
         if (this.x - x > 0) {
             this.x -= 1;

@@ -9,19 +9,9 @@ package barfightsimulator.domain;
  *
  * @author Markus
  */
-public class Player extends Character {
-
-    public Player(int x, int y) {
-        super(x, y);
-    }
+public abstract class LocalizableObject {
     
-    
-    public void move(int dx, int dy) {
-        this.x += dx;
-        this.y += dy;
-    }
-    
-    
-    
+    public int x;
+    public int y;
     
 }

@@ -9,10 +9,7 @@ package barfightsimulator.domain;
  *
  * @author Markus
  */
-public abstract class Character {
-    
-    public int x;
-    public int y;
+public abstract class Character extends LocalizableObject {
     
     public Character(int x, int y) {
         this.x = x;
@@ -33,10 +30,6 @@ public abstract class Character {
     
     public void setY(int y) {
         this.y = y;
-    }
-    
-    public void move(int x, int y) {
-        
     }
     
     @Override
