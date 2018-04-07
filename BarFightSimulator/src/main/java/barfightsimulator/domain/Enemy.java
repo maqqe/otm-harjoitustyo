@@ -9,7 +9,7 @@ package barfightsimulator.domain;
  *
  * @author Markus
  */
-public class Enemy extends Character {
+public class Enemy extends LocalizableObject {
 
     private Player player;
     
