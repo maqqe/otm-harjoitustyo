@@ -9,10 +9,11 @@ package barfightsimulator.domain;
  *
  * @author Markus
  */
-public class Player extends LocalizableObject {
+public class Player extends Character {
 
     public Player(int x, int y) {
         super(x, y);
+        this.hitpoints = 10;
     }
     
     

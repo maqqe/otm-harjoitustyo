@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 
+import barfightsimulator.domain.Enemy;
+import barfightsimulator.domain.LocalizableObject;
 import barfightsimulator.domain.Player;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -76,5 +80,14 @@ public class PlayerTest {
     @Test
     public void toStringReturnsCorrectString() {
         assertEquals(player.toString(), "[0, 0]");
+    }
+    
+    @Test
+    public void searchAdjacentSquaresFindsAdjacentLocalizableObjects() {
+        Enemy e = new Enemy(1, 1, player);
+        List<LocalizableObject> objects = new ArrayList<>();
+        objects.add(e);
+        objects.add(player);
+        assertEquals(2, player.searchAdjacentSquares(objects).size());
     }
 }

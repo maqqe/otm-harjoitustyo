@@ -9,7 +9,7 @@ package barfightsimulator.domain;
  *
  * @author Markus
  */
-public class Enemy extends LocalizableObject {
+public class Enemy extends Character {
 
     private Player player;
     
@@ -19,17 +19,26 @@ public class Enemy extends LocalizableObject {
     }
     
     
-    public void move(int x, int y) {
-        if (this.x - x > 0) {
-            this.x -= 1;
-        } else if (this.x - x < 0) {
+    public void chase(int x, int y) {
+        if (this.x < x - 1) {
             this.x += 1;
-        } else if (this.y - y > 0) {
-            this.y -= 1;
-        } else if (this.y - y < 0) {
+        } else if (this.x > x + 1) {
+            this.x -= 1;
+        }
+        
+        if (this.y < y - 1) {
             this.y += 1;
+        } else if (this.y > y + 1) {
+            this.y -= 1;
         }
     }
     
+    public boolean isNextToPlayer() {
+        return Math.abs(this.x - player.getX()) == 1 && Math.abs(this.y - player.getY()) == 1;
+    }
+    
+    public void attack() {
+        if (isNextToPlayer()) player.setHitpoints(player.getHitpoints() - 1);
+    }
     
 }
