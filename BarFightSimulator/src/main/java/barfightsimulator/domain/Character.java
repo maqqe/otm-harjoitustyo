@@ -17,9 +17,11 @@ import java.util.Map;
 public abstract class Character extends LocalizableObject {
     
     protected int hitpoints;
+    protected boolean alive;
     
     public Character(int x, int y) {
         super(x, y);
+        this.alive = true;
     }
     
     public List<LocalizableObject> searchAdjacentSquares(List<LocalizableObject> objects) {
@@ -47,5 +49,10 @@ public abstract class Character extends LocalizableObject {
     
     public void setHitpoints(int hitpoints) {
         this.hitpoints = hitpoints;
+        if (this.hitpoints <= 0) alive = false;
+    }
+    
+    public boolean isAlive() {
+        return this.alive;
     }
 }

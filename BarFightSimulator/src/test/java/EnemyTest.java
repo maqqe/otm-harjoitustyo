@@ -67,7 +67,17 @@ public class EnemyTest {
     
     @Test
     public void attackDoesNotLowerPlayerHitpointsIfNotAdjacent() {
+        enemy.setX(1);
         enemy.attack();
         assertEquals(10, player.getHitpoints());
+    }
+    
+    @Test
+    public void setHitpointsChangesAliveToFalseIfNewHitpointsUnderOne() {
+        enemy.setX(1);
+        enemy.setY(1);
+        player.setHitpoints(1);
+        enemy.attack();
+        assertFalse(player.isAlive());
     }
 }

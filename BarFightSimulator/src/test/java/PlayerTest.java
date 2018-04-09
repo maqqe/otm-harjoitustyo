@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 public class PlayerTest {
     
     Player player;
+    List<Enemy> enemies;
     
     public PlayerTest() {
     }
@@ -38,6 +39,7 @@ public class PlayerTest {
     @Before
     public void setUp() {
         player = new Player(0, 0);
+        enemies = new ArrayList<>();
         
     }
     
@@ -61,7 +63,7 @@ public class PlayerTest {
     
     @Test
     public void moveCorrectlyChangesPlayerPosition() {
-        player.move(1, 0);
+        player.move(1, 0, enemies);
         assertEquals(player.getX(), 1);
     }
     
@@ -89,5 +91,14 @@ public class PlayerTest {
         objects.add(e);
         objects.add(player);
         assertEquals(2, player.searchAdjacentSquares(objects).size());
+    }
+    
+    @Test
+    public void interactAttacksIfEnemyAtTile() {
+        Enemy e = new Enemy(0, 1, player);
+        
+        enemies.add(e);
+        player.interact(0, 1, enemies);
+        assertEquals(4, e.getHitpoints());
     }
 }

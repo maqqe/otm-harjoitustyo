@@ -16,6 +16,7 @@ public class Enemy extends Character {
     public Enemy(int x, int y, Player player) {
         super(x, y);
         this.player = player;
+        this.hitpoints = 5;
     }
     
     

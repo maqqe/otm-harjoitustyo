@@ -3,8 +3,10 @@ package barfightsimulator;
 import barfightsimulator.domain.Enemy;
 import barfightsimulator.domain.LocalizableObject;
 import barfightsimulator.domain.Player;
+import barfightsimulator.ui.Ui;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -40,61 +42,17 @@ public class MainApp {
     
     public static void main(String[] args) {
 //        launch(args);
-        
-        Player p = new Player(0, 0);
-        
-        Enemy e = new Enemy(6, 3, p);
-        
+
+        Player player = new Player(5, 5);
+        Enemy e1 = new Enemy(0, 0, player);
+        Enemy e2 = new Enemy(15, 15, player);
+        List<Enemy> enemies = new ArrayList<>();
+        enemies.add(e1);
+        enemies.add(e2);
         List<LocalizableObject> objects = new ArrayList<>();
-        
-        objects.add(e);
-        objects.add(p);
-        
-        List<LocalizableObject> pObjects = p.searchAdjacentSquares(objects);
-        
-        System.out.println(pObjects.size());
-        
-        List<LocalizableObject> eObjects = e.searchAdjacentSquares(objects);
-        
-        System.out.println(eObjects.size());
-        
-        e.attack();
-        System.out.println("hp left   " + p.getHitpoints());
-        
-        e.chase(p.x, p.y);
-        
-        System.out.println(e);
-        e.chase(p.x, p.y);
-        e.attack();
-        System.out.println("hp left   " + p.getHitpoints());
-        System.out.println(e);
-       
-        
-        e.chase(p.x, p.y);
-        System.out.println(e);
-        e.attack();
-        System.out.println("hp left   " + p.getHitpoints());
-        e.chase(p.x, p.y);
-        System.out.println(e);
-        e.chase(p.x, p.y);
-        System.out.println(e);
-        e.attack();
-        System.out.println("hp left   " + p.getHitpoints());
-        e.chase(p.x, p.y);
-        System.out.println(e);
-        e.chase(p.x, p.y);
-        System.out.println(e);
-        e.chase(p.x, p.y);
-        e.attack();
-        System.out.println("hp left   " + p.getHitpoints());
-        e.chase(p.x, p.y);
-        e.chase(p.x, p.y);
-        e.chase(p.x, p.y);
-        System.out.println(e);
-        e.attack();
-        System.out.println("hp left   " + p.getHitpoints());
-        
-                
+        Scanner reader = new Scanner(System.in);
+        Ui ui = new Ui(player, objects, enemies, reader);
+        ui.start();
         
     }
 
