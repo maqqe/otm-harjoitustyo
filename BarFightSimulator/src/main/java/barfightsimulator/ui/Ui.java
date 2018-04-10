@@ -37,6 +37,7 @@ public class Ui {
         orders.put("2", "2 - Move down");
         orders.put("3", "3 - Move down and right");
         orders.put("4", "4 - Move left");
+        orders.put("5", "5 - Hold at current position");
         orders.put("6", "6 - Move right");
         orders.put("7", "7 - Move up and left");
         orders.put("8", "8 - Move up");
@@ -64,13 +65,13 @@ public class Ui {
                 break;
             }
             
-            System.out.println("Your hitpoints: " + player.getHitpoints());
+            System.out.println("\nYour hitpoints: " + player.getHitpoints());
             
             System.out.println("You are at: " + player);
             
             System.out.print("Enemies at: ");
             
-            enemies.stream().forEach(e -> System.out.print(e + " "));
+            enemies.stream().filter(Enemy::isAlive).forEach(e -> System.out.print(e + " "));
             
             System.out.println("");
             
@@ -85,6 +86,8 @@ public class Ui {
                 player.move(player.getX() + 1, player.getY() - 1, enemies);
             } else if (command.equals("4")) {
                 player.move(player.getX() - 1, player.getY(), enemies);
+            } else if (command.equals("5")) {
+                player.move(player.getX(), player.getY(), enemies);
             } else if (command.equals("6")) {
                 player.move(player.getX() + 1, player.getY(), enemies);
             } else if (command.equals("7")) {
@@ -98,8 +101,8 @@ public class Ui {
             }
             
             for (Enemy e : enemies) {
-                e.chase(player.getX(), player.getY());
                 e.attack();
+                e.chase(player.getX(), player.getY());
             }
         }
         
