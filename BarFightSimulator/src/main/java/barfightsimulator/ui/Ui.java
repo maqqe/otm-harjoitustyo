@@ -23,7 +23,7 @@ public class Ui {
     private List<LocalizableObject> objects;
     private List<Enemy> enemies;
     private Scanner reader;
-    private Map<String,String> orders;
+    private Map<String,String> commands;
     
     public Ui(Player player, List<LocalizableObject> objects, List<Enemy> enemies, Scanner reader) {
         this.player = player;
@@ -31,17 +31,17 @@ public class Ui {
         this.enemies = enemies;
         this.reader = reader;
         
-        orders = new TreeMap<>();
+        commands = new TreeMap<>();
         
-        orders.put("1", "1 - Move down and left");
-        orders.put("2", "2 - Move down");
-        orders.put("3", "3 - Move down and right");
-        orders.put("4", "4 - Move left");
-        orders.put("5", "5 - Hold at current position");
-        orders.put("6", "6 - Move right");
-        orders.put("7", "7 - Move up and left");
-        orders.put("8", "8 - Move up");
-        orders.put("9", "9 - Move up and right");
+        commands.put("1", "1 - Move down and left");
+        commands.put("2", "2 - Move down");
+        commands.put("3", "3 - Move down and right");
+        commands.put("4", "4 - Move left");
+        commands.put("5", "5 - Hold at current position");
+        commands.put("6", "6 - Move right");
+        commands.put("7", "7 - Move up and left");
+        commands.put("8", "8 - Move up");
+        commands.put("9", "9 - Move up and right");
                 
     }
     
@@ -109,7 +109,7 @@ public class Ui {
     }
     
     public void printCommands() {
-        orders.values().stream().forEach(System.out::println);
+        commands.values().stream().forEach(System.out::println);
         
     }
     
