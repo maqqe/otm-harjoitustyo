@@ -5,3 +5,4 @@ Päivämäärä | Tunnit | Aktiviteetti
 8.4. | 3 | Lisätty featureja, kirjoitettu lisää testejä
 9.4. | 3 | Lisätty featureja, kirjoitettu lisää testejä
 10.4. | 1 | Lisätty featureja, säädetty testikäyttöjärjestelmää
+13.4. | 1 | Lisätty featureja

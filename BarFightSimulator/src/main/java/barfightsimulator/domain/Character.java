@@ -18,13 +18,15 @@ public abstract class Character extends LocalizableObject {
     
     protected int hitpoints;
     protected boolean alive;
+    protected Item item;
     
     public Character(int x, int y) {
         super(x, y);
         this.alive = true;
+        this.item = null;
     }
     
-    public List<LocalizableObject> searchAdjacentSquares(List<LocalizableObject> objects) {
+    public List<LocalizableObject> searchAdjacentTiles(List<LocalizableObject> objects) {
         List<LocalizableObject> adjacentObjects = new ArrayList<>();
         
         int searchY = this.y - 1;
@@ -54,5 +56,9 @@ public abstract class Character extends LocalizableObject {
     
     public boolean isAlive() {
         return this.alive;
+    }
+    
+    public void equip(Item item) {
+        this.item = item;
     }
 }

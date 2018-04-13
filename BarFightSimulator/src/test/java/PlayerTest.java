@@ -85,12 +85,12 @@ public class PlayerTest {
     }
     
     @Test
-    public void searchAdjacentSquaresFindsAdjacentLocalizableObjects() {
+    public void searchAdjacentTilesFindsAdjacentLocalizableObjects() {
         Enemy e = new Enemy(1, 1, player);
         List<LocalizableObject> objects = new ArrayList<>();
         objects.add(e);
         objects.add(player);
-        assertEquals(2, player.searchAdjacentSquares(objects).size());
+        assertEquals(2, player.searchAdjacentTiles(objects).size());
     }
     
     @Test

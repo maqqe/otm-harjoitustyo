@@ -12,6 +12,8 @@ import java.util.List;
  * @author Markus
  */
 public class Player extends Character {
+    
+    
 
     public Player(int x, int y) {
         super(x, y);
@@ -39,9 +41,5 @@ public class Player extends Character {
     
     public void attack(Enemy enemy) {
         enemy.setHitpoints(enemy.getHitpoints() - 1);
-    }
-    
-    
-    
-    
+    }    
 }
