@@ -1,6 +1,8 @@
 package barfightsimulator;
 
 import barfightsimulator.domain.Enemy;
+import barfightsimulator.domain.Item;
+import barfightsimulator.domain.Itemtype;
 import barfightsimulator.domain.LocalizableObject;
 import barfightsimulator.domain.Player;
 import barfightsimulator.ui.Ui;
@@ -49,9 +51,14 @@ public class MainApp {
         List<Enemy> enemies = new ArrayList<>();
         enemies.add(e1);
         enemies.add(e2);
+        List<Item> items = new ArrayList<>();
+        Item i1 = new Item(4, 4, Itemtype.KNIFE);
+        Item i2 = new Item(5, 6, Itemtype.BEER);
+        items.add(i1);
+        items.add(i2);
         List<LocalizableObject> objects = new ArrayList<>();
         Scanner reader = new Scanner(System.in);
-        Ui ui = new Ui(player, objects, enemies, reader);
+        Ui ui = new Ui(player, objects, enemies, reader, items);
         ui.start();
         
     }

@@ -34,4 +34,9 @@ public class Item extends LocalizableObject {
     public void setItemtype(Itemtype type) {
         this.type = type;
     }
+    
+    @Override
+    public String toString() {
+        return "[" + this.x + ", " + this.y + "] " + type + " ";
+    }
 }

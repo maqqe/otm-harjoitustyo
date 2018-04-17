@@ -5,6 +5,7 @@
  */
 
 import barfightsimulator.domain.Enemy;
+import barfightsimulator.domain.Item;
 import barfightsimulator.domain.LocalizableObject;
 import barfightsimulator.domain.Player;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class PlayerTest {
     
     Player player;
     List<Enemy> enemies;
+    List<Item> items;
     
     public PlayerTest() {
     }
@@ -40,6 +42,7 @@ public class PlayerTest {
     public void setUp() {
         player = new Player(0, 0);
         enemies = new ArrayList<>();
+        items = new ArrayList<>();
         
     }
     
@@ -63,7 +66,7 @@ public class PlayerTest {
     
     @Test
     public void moveCorrectlyChangesPlayerPosition() {
-        player.move(1, 0, enemies);
+        player.move(1, 0, enemies, items);
         assertEquals(player.getX(), 1);
     }
     

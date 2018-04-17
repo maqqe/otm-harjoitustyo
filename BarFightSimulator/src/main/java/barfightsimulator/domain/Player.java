@@ -21,11 +21,17 @@ public class Player extends Character {
     }
     
     
-    public void move(int dx, int dy, List<Enemy> enemies) {
+    public void move(int dx, int dy, List<Enemy> enemies, List<Item> items) {
         if (interact(dx, dy, enemies)) return;
+        
         
         this.x = dx;
         this.y = dy;
+        for (Item i : items) {
+            if (i.getX() == dx && i.getY() == dy && this.item == null) {
+                this.item = i;
+            }
+        }
     }
     
     public boolean interact(int x, int y, List<Enemy> enemies) {
@@ -41,5 +47,10 @@ public class Player extends Character {
     
     public void attack(Enemy enemy) {
         enemy.setHitpoints(enemy.getHitpoints() - 1);
-    }    
+        if (this.item != null && this.item.getItemtype() == Itemtype.KNIFE) {
+            enemy.setHitpoints(enemy.getHitpoints() - 2);
+        }
+    }
+
+    
 }
