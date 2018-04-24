@@ -31,7 +31,7 @@ Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto target/site/jac
 
 ### Checkstyle
 
-Tiedostossa checkstyle.xml määritellyt tarkistukset suoritetaan komennolla
+Tiedostossa [checkstyle.xml](https://github.com/maqqe/otm-harjoitustyo/blob/master/BarFightSimulator/checkstyle.xml) määritellyt tarkistukset suoritetaan komennolla
 
 > mvn jxr:jxr checkstyle:checkstyle
 
