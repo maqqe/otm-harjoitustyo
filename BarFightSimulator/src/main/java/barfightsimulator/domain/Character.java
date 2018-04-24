@@ -67,7 +67,7 @@ public abstract class Character extends LocalizableObject {
         item.setEquipped(true);
     }
     
-    public void use(Item item) {
+    public void use() {
         if (this.item != null && this.item.getItemtype() == Itemtype.BEER) {
             this.hitpoints += 1;
             this.item = null;

@@ -111,7 +111,9 @@ public class Ui {
             } else if (command.equals("9")) {
                 player.move(player.getX() + 1, player.getY() + 1, enemies, items);
             } else if (command.equals("0")) {
-                player.move(player.getX() + 1, player.getY() + 1, enemies, items);
+                if (player.getItem() != null) {
+                    player.use();
+                }
             } else {
                 continue;
             }

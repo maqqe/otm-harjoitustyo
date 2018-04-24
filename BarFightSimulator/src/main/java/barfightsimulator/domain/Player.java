@@ -31,7 +31,7 @@ public class Player extends Character {
         this.y = dy;
         for (Item i : items) {
             if (i.getX() == dx && i.getY() == dy && this.item == null) {
-                this.item = i;
+                equip(i);
             }
         }
     }

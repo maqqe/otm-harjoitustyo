@@ -17,6 +17,7 @@ public class Item extends LocalizableObject {
     public Item(int x, int y, Itemtype type) {
         super(x, y);
         this.type = type;
+        
     }
     
     public boolean isEquipped() {
@@ -37,6 +38,11 @@ public class Item extends LocalizableObject {
     
     @Override
     public String toString() {
+        if (equipped) {
+            return "" + type;
+        }
         return "[" + this.x + ", " + this.y + "] " + type + " ";
     }
+    
+    
 }

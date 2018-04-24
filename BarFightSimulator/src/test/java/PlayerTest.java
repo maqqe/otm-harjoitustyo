@@ -6,6 +6,7 @@
 
 import barfightsimulator.domain.Enemy;
 import barfightsimulator.domain.Item;
+import barfightsimulator.domain.Itemtype;
 import barfightsimulator.domain.LocalizableObject;
 import barfightsimulator.domain.Player;
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class PlayerTest {
     Player player;
     List<Enemy> enemies;
     List<Item> items;
+    Item knife;
+    Item beer;
+    Enemy enemy;
     
     public PlayerTest() {
     }
@@ -43,7 +47,12 @@ public class PlayerTest {
         player = new Player(0, 0);
         enemies = new ArrayList<>();
         items = new ArrayList<>();
-        
+        knife = new Item(1, 0, Itemtype.KNIFE);
+        beer = new Item(0, 1, Itemtype.BEER);
+        enemy = new Enemy(1, 1, player);
+        enemies.add(enemy);
+        items.add(beer);
+        items.add(knife);
     }
     
     @After
@@ -103,5 +112,44 @@ public class PlayerTest {
         enemies.add(e);
         player.interact(0, 1, enemies);
         assertEquals(4, e.getHitpoints());
+    }
+    
+    @Test
+    public void ifPlayerHasKnifeEnemyLosesThreeHitpointsIfAttackedByPlayer() {
+        Enemy e = new Enemy(0, 1, player);
+        player.equip(knife);
+        enemies.add(e);
+        player.interact(0, 1, enemies);
+        assertEquals(2, e.getHitpoints());
+    }
+    
+    @Test
+    public void moveDoesNotChangePlayerCoordinatesIfEnemyAtTargetTile() {
+        player.move(1, 1, enemies, items);
+        assertEquals("[0, 0]", player.toString());
+    }
+    
+    @Test
+    public void movingIntoTileWithItemEquipsItem() {
+        player.move(1, 0, enemies, items);
+        assertEquals("KNIFE", player.getItem().toString());
+    }
+    
+    @Test
+    public void equipEquipsParameterItem() {
+        player.equip(beer);
+        assertEquals("BEER", player.getItem().toString());
+    }
+    
+    @Test
+    public void useIncreasesHealthIfBeerEquipped() {
+        player.equip(beer);
+        player.use();
+        assertEquals(11, player.getHitpoints());
+    }
+    
+    @Test
+    public void getItemReturnsNullIfNoItemEquipped() {
+        assertEquals(null, player.getItem());
     }
 }
