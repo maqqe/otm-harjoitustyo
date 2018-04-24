@@ -6,3 +6,6 @@ Päivämäärä | Tunnit | Aktiviteetti
 9.4. | 3 | Lisätty featureja, kirjoitettu lisää testejä
 10.4. | 1 | Lisätty featureja, säädetty testikäyttöjärjestelmää
 13.4. | 1 | Lisätty featureja
+24.4. | 4 | Rästejä tehty, lisätty featureja ja testejä, checkstyle lisätty...
+
+Summa: 15 h

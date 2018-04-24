@@ -1,7 +1,3 @@
-Viikon 4 edistystä koskien: Olen ollut sillä tavalla sairaana, ettei koodin kirjoittaminen saatika muu projektiin liittyvä toiminta ole oikein onnistunut.
-
-Sikäli kun tässä paranen, voisin yrittää ensi viikolla tehdä rästit ja ottaa aikataulun kiinni. En omasta puolestani ole lopettamassa kurssia.
-
 # Bar Fight Simulator
 
 A game about drinking beer and crushing your enemies while you're at it.
