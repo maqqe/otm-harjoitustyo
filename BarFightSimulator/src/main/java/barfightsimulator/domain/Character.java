@@ -36,7 +36,9 @@ public abstract class Character extends LocalizableObject {
                         
             for (int j = 0; j < 3; j++) {
                 for (LocalizableObject object : objects) {
-                    if (object.getX() == searchX && object.getY() == searchY) adjacentObjects.add(object);
+                    if (object.getX() == searchX && object.getY() == searchY) {
+                        adjacentObjects.add(object);
+                    }
                 }
                 searchX += 1;
             }
@@ -51,7 +53,9 @@ public abstract class Character extends LocalizableObject {
     
     public void setHitpoints(int hitpoints) {
         this.hitpoints = hitpoints;
-        if (this.hitpoints <= 0) alive = false;
+        if (this.hitpoints <= 0) {
+            alive = false;
+        }
     }
     
     public boolean isAlive() {
@@ -71,7 +75,9 @@ public abstract class Character extends LocalizableObject {
     }
     
     public Item getItem() {
-        if (this.item != null) return this.item;
+        if (this.item != null) {
+            return this.item;
+        }
         return null;
     } 
 }

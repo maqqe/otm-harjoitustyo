@@ -41,7 +41,9 @@ public class Enemy extends Character {
     }
     
     public void attack() {
-        if (isNextToPlayer() && alive) player.setHitpoints(player.getHitpoints() - 1);
+        if (isNextToPlayer() && alive) {
+            player.setHitpoints(player.getHitpoints() - 1);
+        }
     }
     
 }

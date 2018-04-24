@@ -22,8 +22,10 @@ public class Player extends Character {
     
     
     public void move(int dx, int dy, List<Enemy> enemies, List<Item> items) {
-        if (interact(dx, dy, enemies)) return;
         
+        if (interact(dx, dy, enemies)) {
+            return;
+        }
         
         this.x = dx;
         this.y = dy;
