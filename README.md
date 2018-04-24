@@ -13,6 +13,8 @@ A game about drinking beer and crushing your enemies while you're at it.
 
 [Työaikakirjanpito](https://github.com/maqqe/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[Arkkitehtuuri](https://github.com/maqqe/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 ## Komentorivitoiminnot
 
 ### Testaus
