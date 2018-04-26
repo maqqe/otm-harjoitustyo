@@ -6,8 +6,12 @@ import barfightsimulator.domain.Itemtype;
 import barfightsimulator.domain.LocalizableObject;
 import barfightsimulator.domain.Player;
 import barfightsimulator.ui.Ui;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.Random;
 import java.util.Scanner;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -42,12 +46,31 @@ import javafx.stage.Stage;
 
 public class MainApp {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        launch(args);
+        
+        Properties properties = new Properties();
+        
+        properties.load(new FileInputStream("config.properties"));
+        
+        String names = properties.getProperty("enemyNameFile");
+        
+        List<String> nameList = new ArrayList<>();
+        
+        try {
+            Scanner reader = new Scanner(new File(names));
+            while (reader.hasNext()) {
+                nameList.add(reader.next());
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        
+        Random rng = new Random();
 
         Player player = new Player(5, 5);
-        Enemy e1 = new Enemy(0, 0, player);
-        Enemy e2 = new Enemy(15, 15, player);
+        Enemy e1 = new Enemy(0, 0, player, drawName(nameList, rng));
+        Enemy e2 = new Enemy(15, 15, player, drawName(nameList, rng));
         List<Enemy> enemies = new ArrayList<>();
         enemies.add(e1);
         enemies.add(e2);
@@ -61,6 +84,10 @@ public class MainApp {
         Ui ui = new Ui(player, objects, enemies, reader, items);
         ui.start();
         
+    }
+    
+    public static String drawName(List<String> names, Random rng) {
+        return names.get(rng.nextInt(names.size()));
     }
 
 }

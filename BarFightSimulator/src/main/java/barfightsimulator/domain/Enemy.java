@@ -12,11 +12,13 @@ package barfightsimulator.domain;
 public class Enemy extends Character {
 
     private Player player;
+    private String name;
     
-    public Enemy(int x, int y, Player player) {
+    public Enemy(int x, int y, Player player, String name) {
         super(x, y);
         this.player = player;
         this.hitpoints = 5;
+        this.name = name;
     }
     
     
@@ -44,6 +46,11 @@ public class Enemy extends Character {
         if (isNextToPlayer() && alive) {
             player.setHitpoints(player.getHitpoints() - 1);
         }
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + " " + this.name + ", " + this.hitpoints + " hp";
     }
     
 }

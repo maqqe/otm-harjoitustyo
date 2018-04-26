@@ -49,7 +49,7 @@ public class PlayerTest {
         items = new ArrayList<>();
         knife = new Item(1, 0, Itemtype.KNIFE);
         beer = new Item(0, 1, Itemtype.BEER);
-        enemy = new Enemy(1, 1, player);
+        enemy = new Enemy(1, 1, player, "test");
         enemies.add(enemy);
         items.add(beer);
         items.add(knife);
@@ -98,7 +98,7 @@ public class PlayerTest {
     
     @Test
     public void searchAdjacentTilesFindsAdjacentLocalizableObjects() {
-        Enemy e = new Enemy(1, 1, player);
+        Enemy e = new Enemy(1, 1, player, "test");
         List<LocalizableObject> objects = new ArrayList<>();
         objects.add(e);
         objects.add(player);
@@ -107,7 +107,7 @@ public class PlayerTest {
     
     @Test
     public void interactAttacksIfEnemyAtTile() {
-        Enemy e = new Enemy(0, 1, player);
+        Enemy e = new Enemy(0, 1, player, "test");
         
         enemies.add(e);
         player.interact(0, 1, enemies);
@@ -116,7 +116,7 @@ public class PlayerTest {
     
     @Test
     public void ifPlayerHasKnifeEnemyLosesThreeHitpointsIfAttackedByPlayer() {
-        Enemy e = new Enemy(0, 1, player);
+        Enemy e = new Enemy(0, 1, player, "test");
         player.equip(knife);
         enemies.add(e);
         player.interact(0, 1, enemies);

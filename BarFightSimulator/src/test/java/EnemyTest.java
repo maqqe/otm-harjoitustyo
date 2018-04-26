@@ -36,7 +36,7 @@ public class EnemyTest {
     @Before
     public void setUp() {
         player = new Player(0, 0);
-        enemy = new Enemy(2, 3, player);
+        enemy = new Enemy(2, 3, player, "test");
     }
     
     @After

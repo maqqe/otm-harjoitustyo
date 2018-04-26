@@ -27,6 +27,7 @@ public class Ui {
     private Map<String,String> commands;
     private List<Item> items;
     
+    
     public Ui(Player player, List<LocalizableObject> objects, List<Enemy> enemies, Scanner reader, List<Item> items) {
         this.player = player;
         this.objects = objects;
@@ -74,18 +75,18 @@ public class Ui {
             
             System.out.println("\nYour hitpoints: " + player.getHitpoints());
             
-            System.out.println("You are at: " + player);
+            System.out.println("You are at: " + player + "\n");
             
             if (player.getItem() != null) System.out.println("You hold a " + player.getItem());
             
-            System.out.print("Enemies at: ");
+            System.out.println("Enemies: ");
             
-            enemies.stream().filter(Enemy::isAlive).forEach(e -> System.out.print(e + " hp " + e.getHitpoints() + "  "));
+            enemies.stream().filter(Enemy::isAlive).forEach(System.out::println);
             
             System.out.println("");
-            System.out.print("Items at: ");
+            System.out.println("Items at: ");
             
-            items.stream().filter(i -> i.isEquipped() == false).forEach(i -> System.out.print(i + " "));
+            items.stream().filter(i -> i.isEquipped() == false).forEach(System.out::println);
             
             System.out.println("");         
             
