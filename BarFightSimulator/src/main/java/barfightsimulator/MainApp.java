@@ -60,29 +60,92 @@ public class MainApp {
         try {
             Scanner reader = new Scanner(new File(names));
             while (reader.hasNext()) {
-                nameList.add(reader.next());
+                String name = reader.next();
+                if (name.length() > 20) {
+                    nameList.add(name.substring(0, 20));
+                } else {
+                    nameList.add(name);
+                }                
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e + "\nAll enemies will be named Ilja");
+            nameList.add("Ilja");
+        }
+        
+        Random rng = new Random();
+        
+        String enemyLocations = properties.getProperty("enemyLocationsFile");        
+        List<String> enemyLocationList = new ArrayList<>();
+        
+        try {
+            Scanner reader = new Scanner(new File(enemyLocations));
+            while (reader.hasNext()) {
+                enemyLocationList.add(reader.next());
             }
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
         
-        Random rng = new Random();
-
-        Player player = new Player(5, 5);
-        Enemy e1 = new Enemy(0, 0, player, drawName(nameList, rng));
-        Enemy e2 = new Enemy(15, 15, player, drawName(nameList, rng));
-        List<Enemy> enemies = new ArrayList<>();
-        enemies.add(e1);
-        enemies.add(e2);
-        List<Item> items = new ArrayList<>();
-        Item i1 = new Item(4, 4, Itemtype.KNIFE);
-        Item i2 = new Item(5, 6, Itemtype.BEER);
-        items.add(i1);
-        items.add(i2);
-        List<LocalizableObject> objects = new ArrayList<>();
+        String itemLocations = properties.getProperty("itemLocationsFile");
+        List<String> itemLocationList = new ArrayList<>();
+        
+        try {
+            Scanner reader = new Scanner(new File(itemLocations));
+            while (reader.hasNext()) {
+                itemLocationList.add(reader.next());
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        
         Scanner reader = new Scanner(System.in);
-        Ui ui = new Ui(player, objects, enemies, reader, items);
-        ui.start();
+        List<LocalizableObject> o = new ArrayList<>();
+        List<Enemy> enemies = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
+        
+        enemyLocationList.stream().forEach(System.out::println);
+        
+        for (int i = 0; i < enemyLocationList.size(); i++) {
+            System.out.println("ROUND " + (i + 1) + "\n");
+            Player player = new Player(5, 5);
+            String[] allEnemyCoordinates = enemyLocationList.get(i).split(";");
+            String[] allItemCoordinates = itemLocationList.get(i).split(";");
+            
+            for (int j = 0; j < allEnemyCoordinates.length; j++) {
+                String[] enemyCoordinates = allEnemyCoordinates[j].split(",");
+                Enemy enemy = new Enemy(Integer.parseInt(enemyCoordinates[0]), Integer.parseInt(enemyCoordinates[1]), player, drawName(nameList, rng));
+                enemies.add(enemy);                              
+            }
+            
+            for (int k = 0; k < allItemCoordinates.length; k++) {
+                if (!allItemCoordinates[k].equals("noItems")) {
+                    String[] itemCoordinates = allItemCoordinates[k].split(",");
+                    Item item = new Item(Integer.parseInt(itemCoordinates[0]), Integer.parseInt(itemCoordinates[1]), Itemtype.valueOf(itemCoordinates[2]));
+                    items.add(item);
+                }  
+            }           
+            
+            Ui ui = new Ui(player, o, enemies, reader, items);
+            ui.start();
+            enemies.clear();
+            items.clear();
+        }
+        
+//        Player player = new Player(5, 5);
+//        Enemy e1 = new Enemy(0, 0, player, drawName(nameList, rng));
+//        Enemy e2 = new Enemy(15, 15, player, drawName(nameList, rng));
+//        List<Enemy> enemies = new ArrayList<>();
+//        enemies.add(e1);
+//        enemies.add(e2);
+//        List<Item> items = new ArrayList<>();
+//        Item i1 = new Item(4, 4, Itemtype.KNIFE);
+//        Item i2 = new Item(5, 6, Itemtype.BEER);
+//        items.add(i1);
+//        items.add(i2);
+//        List<LocalizableObject> objects = new ArrayList<>();
+//        Scanner reader = new Scanner(System.in);
+//        Ui ui = new Ui(player, objects, enemies, reader, items);
+//        ui.start();
         
     }
     

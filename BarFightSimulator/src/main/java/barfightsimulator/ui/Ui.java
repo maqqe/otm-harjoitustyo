@@ -67,12 +67,6 @@ public class Ui {
                 break;
             }
             
-            if (enemies.stream().filter(e -> e.isAlive()).count() == 0) {
-                System.out.println("All your enemies have perished!"
-                        + " You've survived to drink another day!");
-                break;
-            }
-            
             System.out.println("\nYour hitpoints: " + player.getHitpoints());
             
             System.out.println("You are at: " + player + "\n");
@@ -86,7 +80,10 @@ public class Ui {
             System.out.println("");
             System.out.println("Items at: ");
             
-            items.stream().filter(i -> i.isEquipped() == false).forEach(System.out::println);
+            if (this.items != null) {
+                items.stream().filter(i -> i.isEquipped() == false).forEach(System.out::println);
+            }
+            
             
             System.out.println("");         
             
@@ -117,6 +114,12 @@ public class Ui {
                 }
             } else {
                 continue;
+            }
+            
+            if (enemies.stream().filter(e -> e.isAlive()).count() == 0) {
+                System.out.println("All your enemies have perished!"
+                        + " You've survived to drink another day!");
+                break;
             }
             
             for (Enemy e : enemies) {

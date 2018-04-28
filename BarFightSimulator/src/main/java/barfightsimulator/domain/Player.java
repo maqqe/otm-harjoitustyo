@@ -29,11 +29,14 @@ public class Player extends Character {
         
         this.x = dx;
         this.y = dy;
-        for (Item i : items) {
-            if (i.getX() == dx && i.getY() == dy && this.item == null) {
-                equip(i);
+        if (items != null) {
+            for (Item i : items) {
+                if (i.getX() == dx && i.getY() == dy && this.item == null) {
+                    equip(i);
+                }
             }
         }
+        
     }
     
     public boolean interact(int x, int y, List<Enemy> enemies) {
