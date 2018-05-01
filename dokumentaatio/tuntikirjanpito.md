@@ -9,6 +9,7 @@ Päivämäärä | Tunnit | Aktiviteetti
 24.4. | 4 | Rästejä tehty, lisätty featureja ja testejä, checkstyle lisätty...
 27.4. | 2 | Lisätty featureja
 28.4. | 2 | Lisätty featureja
+31.4. | 2 | Lisätty featureja
+1.5. | 3 | Säädetty tekstikäyttöjärjestelmää, muokattu tietojenkäsittelyjärjestelmää
 
-
-Summa: 19 h
+Summa: 24 h
