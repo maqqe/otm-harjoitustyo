@@ -33,6 +33,23 @@ public class LocalizableObjectDao {
         }        
     }
     
+    
+    // figure out something better for this
+    public int getNumberOfMissions() {
+        String enemyLocations = properties.getProperty("enemyLocationsFile");        
+        List<String> enemyLocationList = new ArrayList<>();
+        
+        try {
+            Scanner reader = new Scanner(new File(enemyLocations));
+            while (reader.hasNext()) {
+                enemyLocationList.add(reader.next());
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        return enemyLocationList.size();
+    }
+    
     public String[] getEnemyLocations(int map) {
     
         String enemyLocations = properties.getProperty("enemyLocationsFile");        

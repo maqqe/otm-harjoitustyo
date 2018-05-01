@@ -3,11 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package barfightsimulator.domain;
+package barfightsimulator.ui;
 
 import barfightsimulator.dao.LocalizableObjectDao;
+import barfightsimulator.domain.Enemy;
+import barfightsimulator.domain.Item;
+import barfightsimulator.domain.Itemtype;
+import barfightsimulator.domain.Player;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -17,36 +22,58 @@ public class MissionLoader {
     
     private LocalizableObjectDao localizableObjectDao;
     private Player player;
+    private Random rng;
+    private List<String> names;
+    private int missions;
     
     public MissionLoader(LocalizableObjectDao dao) {
         localizableObjectDao = dao;
         this.player = new Player(10, 10);
+        this.rng = new Random();
+        this.names = dao.getNames();
+        this.missions = dao.getNumberOfMissions();
     }
     
     public Player getPlayer() {
         return this.player;
     }
     
-    public List<Enemy> getEnemyList(String[] enemyLocations) {
+    public int getNumberOfMissions() {
+        return this.missions;
+    }
+    
+    
+    public List<Enemy> getEnemyList(int map) {
         List<Enemy> enemies = new ArrayList<>();
+        List<String> names = localizableObjectDao.getNames();
+        
+        String[] enemyLocations = localizableObjectDao.getEnemyLocations(map);
         
         for (int i = 0; i < enemyLocations.length; i++) {
             String[] enemyLocation = enemyLocations[i].split(",");
-            enemies.add(new Enemy(Integer.parseInt(enemyLocation[0]), Integer.parseInt(enemyLocation[1]), player, "dave"));
+            enemies.add(new Enemy(Integer.parseInt(enemyLocation[0]), Integer.parseInt(enemyLocation[1]), player, drawName()));
         }
         return enemies;
     }
     
-    public List<Item> getItemList(String[] itemLocations) {
+    public List<Item> getItemList(int map) {
         List<Item> items = new ArrayList<>();
+        
+        String[] itemLocations = localizableObjectDao.getItemLocations(map);
         
         if (!itemLocations[0].equals("noItems")) {
             for (int i = 0; i < itemLocations.length; i++) {
                 String[] itemLocation = itemLocations[i].split(",");
                 items.add(new Item(Integer.parseInt(itemLocation[0]), Integer.parseInt(itemLocation[1]), Itemtype.valueOf(itemLocation[2])));
             }
+        } else {
+            return null;
         }
         return items;
+    }
+    
+    public String drawName() {
+        return names.get(rng.nextInt(names.size()));
     }
     
     

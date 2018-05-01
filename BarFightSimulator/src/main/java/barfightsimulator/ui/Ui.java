@@ -9,6 +9,7 @@ import barfightsimulator.domain.Enemy;
 import barfightsimulator.domain.Item;
 import barfightsimulator.domain.LocalizableObject;
 import barfightsimulator.domain.Player;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -20,20 +21,18 @@ import java.util.TreeMap;
  */
 public class Ui {
     
-    private Player player;
-    private List<LocalizableObject> objects;
-    private List<Enemy> enemies;
+    
     private Scanner reader;
     private Map<String,String> commands;
-    private List<Item> items;
+    private MissionLoader loader;
     
     
-    public Ui(Player player, List<LocalizableObject> objects, List<Enemy> enemies, Scanner reader, List<Item> items) {
-        this.player = player;
-        this.objects = objects;
-        this.enemies = enemies;
+    
+    public Ui(Scanner reader, MissionLoader loader) {
+        
         this.reader = reader;
-        this.items = items;
+        this.loader = loader;
+        
         
         commands = new TreeMap<>();
         
@@ -60,73 +59,86 @@ public class Ui {
                 + "If you move into a tile that contains an item, "
                 + "you will pick up the item.\n");
         
-        while (true) {
+        for (int i = 0; i < loader.getNumberOfMissions(); i++) {
             
-            if (!player.isAlive()) {
-                System.out.println("You're dead, chump! Game over!");
-                break;
-            }
+            System.out.println("\nRound " + (i + 1) + "!");
             
-            System.out.println("\nYour hitpoints: " + player.getHitpoints());
-            
-            System.out.println("You are at: " + player + "\n");
-            
-            if (player.getItem() != null) System.out.println("You hold a " + player.getItem());
-            
-            System.out.println("Enemies: ");
-            
-            enemies.stream().filter(Enemy::isAlive).forEach(System.out::println);
-            
-            System.out.println("");
-            System.out.println("Items at: ");
-            
-            if (this.items != null) {
-                items.stream().filter(i -> i.isEquipped() == false).forEach(System.out::println);
-            }
-            
-            
-            System.out.println("");         
-            
-            System.out.print("Command: ");
-            String command = reader.nextLine();
-            
-            if (command.equals("1")) {
-                player.move(player.getX() - 1, player.getY() - 1, enemies, items);
-            } else if (command.equals("2")) {
-                player.move(player.getX(), player.getY() - 1, enemies, items);
-            } else if (command.equals("3")) {
-                player.move(player.getX() + 1, player.getY() - 1, enemies, items);
-            } else if (command.equals("4")) {
-                player.move(player.getX() - 1, player.getY(), enemies, items);
-            } else if (command.equals("5")) {
-                player.move(player.getX(), player.getY(), enemies, items);
-            } else if (command.equals("6")) {
-                player.move(player.getX() + 1, player.getY(), enemies, items);
-            } else if (command.equals("7")) {
-                player.move(player.getX() - 1, player.getY() + 1, enemies, items);
-            } else if (command.equals("8")) {
-                player.move(player.getX(), player.getY() + 1, enemies, items);
-            } else if (command.equals("9")) {
-                player.move(player.getX() + 1, player.getY() + 1, enemies, items);
-            } else if (command.equals("0")) {
-                if (player.getItem() != null) {
-                    player.use();
+            Player player = loader.getPlayer();
+            List<Item> items = loader.getItemList(i);
+            List<Enemy> enemies = loader.getEnemyList(i);
+
+            while (true) {
+
+                if (!player.isAlive()) {
+                    System.out.println("You're dead, chump! Game over!");
+                    return;
                 }
-            } else {
-                continue;
-            }
-            
-            if (enemies.stream().filter(e -> e.isAlive()).count() == 0) {
-                System.out.println("All your enemies have perished!"
-                        + " You've survived to drink another day!");
-                break;
-            }
-            
-            for (Enemy e : enemies) {
-                e.attack();
-                e.chase(player.getX(), player.getY());
+    //            List<Enemy> enemies = loader.getEnemyList(1);
+
+                System.out.println("\nYour hitpoints: " + player.getHitpoints());
+
+                System.out.println("You are at: " + player + "\n");
+
+                if (loader.getPlayer().getItem() != null) System.out.println("You hold a " + player.getItem());
+
+                System.out.println("Enemies: ");
+
+                enemies.stream().filter(Enemy::isAlive).forEach(System.out::println);
+
+                System.out.println("");
+                System.out.println("Items at: ");
+
+                if (items != null) {
+                    items.stream().filter(item -> item.isEquipped() == false).forEach(System.out::println);
+                }
+
+
+                System.out.println("");         
+
+                System.out.print("Command: ");
+                String command = reader.nextLine();
+
+                if (command.equals("1")) {
+                    player.move(player.getX() - 1, player.getY() - 1, enemies, items);
+                } else if (command.equals("2")) {
+                    player.move(player.getX(), player.getY() - 1, enemies, items);
+                } else if (command.equals("3")) {
+                    player.move(player.getX() + 1, player.getY() - 1, enemies, items);
+                } else if (command.equals("4")) {
+                    player.move(player.getX() - 1, player.getY(), enemies, items);
+                } else if (command.equals("5")) {
+                    player.move(player.getX(), player.getY(), enemies, items);
+                } else if (command.equals("6")) {
+                    player.move(player.getX() + 1, player.getY(), enemies, items);
+                } else if (command.equals("7")) {
+                    player.move(player.getX() - 1, player.getY() + 1, enemies, items);
+                } else if (command.equals("8")) {
+                    player.move(player.getX(), player.getY() + 1, enemies, items);
+                } else if (command.equals("9")) {
+                    player.move(player.getX() + 1, player.getY() + 1, enemies, items);
+                } else if (command.equals("0")) {
+                    if (player.getItem() != null) {
+                        player.use();
+                    }
+                } else {
+                    continue;
+                }
+
+                if (enemies.stream().filter(e -> e.isAlive()).count() == 0) {
+                    System.out.println("All your enemies have perished!"
+                            + " You've survived to drink another day!");
+                    break;
+                }
+
+                for (Enemy e : enemies) {
+                    e.attack();
+                    e.chase(player.getX(), player.getY());
+                }
             }
         }
+        
+        System.out.println("\nAll mission successfully cleared!");
+        
         
     }
     
@@ -134,6 +146,4 @@ public class Ui {
         commands.values().stream().forEach(System.out::println);
         
     }
-    
-    
 }
