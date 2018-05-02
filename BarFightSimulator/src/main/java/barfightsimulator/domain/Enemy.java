@@ -21,7 +21,11 @@ public class Enemy extends Character {
         this.name = name;
     }
     
-    
+    /**
+     * Moves the Enemy directly towards Player.
+     * @param x Player's x-coordinate
+     * @param y Player's y-coordinate
+     */
     public void chase(int x, int y) {
         if (alive) {
             if (this.x < x - 1) {
@@ -38,10 +42,18 @@ public class Enemy extends Character {
         }
     }
     
+    /**
+     * Checks whether Player Character is in an adjacent square.
+     * @return true if Player is in an adjacent square, otherwise false.
+     */
     public boolean isNextToPlayer() {
         return Math.abs(this.x - player.getX()) <= 1 && Math.abs(this.y - player.getY()) <= 1;
     }
     
+    /**
+     * First calls upon the isNextToPlayer() method to ascertain whether player
+     * is adjacent. If yes, reduces the Player's hit points by 1.
+     */
     public void attack() {
         if (isNextToPlayer() && alive) {
             player.setHitpoints(player.getHitpoints() - 1);

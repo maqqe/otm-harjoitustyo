@@ -49,6 +49,9 @@ public class Ui {
                 
     }
     
+    /**
+     * Starts the text UI.
+     */
     public void start() {
         System.out.println("Welcome, brawler!");
         System.out.println("");
@@ -124,7 +127,7 @@ public class Ui {
                     continue;
                 }
 
-                if (enemies.stream().filter(e -> e.isAlive()).count() == 0) {
+                if (enemies.stream().filter(Enemy::isAlive).count() == 0) {
                     System.out.println("All your enemies have perished!"
                             + " You've survived to drink another day!");
                     break;
@@ -137,11 +140,15 @@ public class Ui {
             }
         }
         
-        System.out.println("\nAll mission successfully cleared!");
+        System.out.println("\nAll missions successfully cleared!");
         
         
     }
     
+    
+    /**
+     * Prints text UI commands.
+     */
     public void printCommands() {
         commands.values().stream().forEach(System.out::println);
         

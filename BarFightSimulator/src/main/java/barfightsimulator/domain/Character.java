@@ -26,31 +26,36 @@ public abstract class Character extends LocalizableObject {
         this.item = null;
     }
     
-    public List<LocalizableObject> searchAdjacentTiles(List<LocalizableObject> objects) {
-        List<LocalizableObject> adjacentObjects = new ArrayList<>();
-        
-        int searchY = this.y - 1;
-                
-        for (int i = 0; i < 3; i++) {
-            int searchX = this.x - 1;
-                        
-            for (int j = 0; j < 3; j++) {
-                for (LocalizableObject object : objects) {
-                    if (object.getX() == searchX && object.getY() == searchY) {
-                        adjacentObjects.add(object);
-                    }
-                }
-                searchX += 1;
-            }
-            searchY += 1;
-        }
-        return adjacentObjects;
-    }
+//    public List<LocalizableObject> searchAdjacentTiles(List<LocalizableObject> objects) {
+//        List<LocalizableObject> adjacentObjects = new ArrayList<>();
+//        
+//        int searchY = this.y - 1;
+//                
+//        for (int i = 0; i < 3; i++) {
+//            int searchX = this.x - 1;
+//                        
+//            for (int j = 0; j < 3; j++) {
+//                for (LocalizableObject object : objects) {
+//                    if (object.getX() == searchX && object.getY() == searchY) {
+//                        adjacentObjects.add(object);
+//                    }
+//                }
+//                searchX += 1;
+//            }
+//            searchY += 1;
+//        }
+//        return adjacentObjects;
+//    }
     
     public int getHitpoints() {
         return this.hitpoints;
     }
     
+    /**
+     * Sets the Character's hit points to the given value. If value is under or
+     * equal to zero, sets alive to false.
+     * @param hitpoints The new amount of hit points.
+     */
     public void setHitpoints(int hitpoints) {
         this.hitpoints = hitpoints;
         if (this.hitpoints <= 0) {
@@ -67,6 +72,10 @@ public abstract class Character extends LocalizableObject {
         item.setEquipped(true);
     }
     
+    /**
+     * Uses the item equipped by the Character. For now, if the item is a beer,
+     * increases the hit points of the character by 1.
+     */
     public void use() {
         if (this.item != null && this.item.getItemtype() == Itemtype.BEER) {
             this.hitpoints += 1;

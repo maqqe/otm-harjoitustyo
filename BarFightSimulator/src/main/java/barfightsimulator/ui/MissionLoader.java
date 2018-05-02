@@ -42,7 +42,12 @@ public class MissionLoader {
         return this.missions;
     }
     
-    
+    /**
+     * Returns a list containing Enemy coordinates for a given map. 
+     * 
+     * @param map The number of map
+     * @return List of enemies.
+     */
     public List<Enemy> getEnemyList(int map) {
         List<Enemy> enemies = new ArrayList<>();
         List<String> names = localizableObjectDao.getNames();
@@ -56,6 +61,15 @@ public class MissionLoader {
         return enemies;
     }
     
+    
+    /**
+     * Returns a list containing Item coordinates for a given map. If there
+     * are no items on the map, returns null.
+     * 
+     * 
+     * @param map The number of map
+     * @return If Items exist, return a List. If not, return null.
+     */
     public List<Item> getItemList(int map) {
         List<Item> items = new ArrayList<>();
         
@@ -72,6 +86,10 @@ public class MissionLoader {
         return items;
     }
     
+    /**
+     * Fetches a random name from the name list.
+     * @return A name
+     */
     public String drawName() {
         return names.get(rng.nextInt(names.size()));
     }

@@ -33,8 +33,12 @@ public class LocalizableObjectDao {
         }        
     }
     
+    /**
+     * Returns the number of maps in game. The number of maps is derived from
+     * the number of entries in the file containing enemy locations.
+     * @return The number of missions
+     */
     
-    // figure out something better for this
     public int getNumberOfMissions() {
         String enemyLocations = properties.getProperty("enemyLocationsFile");        
         List<String> enemyLocationList = new ArrayList<>();
@@ -50,6 +54,11 @@ public class LocalizableObjectDao {
         return enemyLocationList.size();
     }
     
+    /**
+     * A method for fetching the Enemy locations for a given map as an Array.
+     * @param map the number of map
+     * @return Enemy locations as a String array
+     */
     public String[] getEnemyLocations(int map) {
     
         String enemyLocations = properties.getProperty("enemyLocationsFile");        
@@ -67,6 +76,11 @@ public class LocalizableObjectDao {
         return enemyLocationList.get(map).split(";");
     }
     
+    /**
+     * Fetches the names from the name file and puts them in a List. In case of
+     * error, returns a list with a single entry, 'Ilja'.
+     * @return A list containing enemy names
+     */
     public List<String> getNames() {
         
         String names = properties.getProperty("enemyNameFile");
@@ -90,6 +104,12 @@ public class LocalizableObjectDao {
         return nameList;
     }
     
+    /**
+     * Fetches Item locations for a given map from the Item location file and
+     * puts them in a String array.
+     * @param map The number of map
+     * @return The Item locations as a String array.
+     */
     public String[] getItemLocations(int map) {
         String itemLocations = properties.getProperty("itemLocationsFile");
         List<String> itemLocationList = new ArrayList<>();
