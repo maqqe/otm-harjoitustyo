@@ -96,14 +96,14 @@ public class PlayerTest {
         assertEquals(player.toString(), "[0, 0]");
     }
     
-    @Test
-    public void searchAdjacentTilesFindsAdjacentLocalizableObjects() {
-        Enemy e = new Enemy(1, 1, player, "test");
-        List<LocalizableObject> objects = new ArrayList<>();
-        objects.add(e);
-        objects.add(player);
-        assertEquals(2, player.searchAdjacentTiles(objects).size());
-    }
+//    @Test
+//    public void searchAdjacentTilesFindsAdjacentLocalizableObjects() {
+//        Enemy e = new Enemy(1, 1, player, "test");
+//        List<LocalizableObject> objects = new ArrayList<>();
+//        objects.add(e);
+//        objects.add(player);
+//        assertEquals(2, player.searchAdjacentTiles(objects).size());
+//    }
     
     @Test
     public void interactAttacksIfEnemyAtTile() {

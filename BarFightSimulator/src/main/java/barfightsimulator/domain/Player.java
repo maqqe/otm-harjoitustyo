@@ -7,6 +7,7 @@ package barfightsimulator.domain;
 
 import java.util.List;
 
+
 /**
  *
  * @author Markus
@@ -28,6 +29,8 @@ public class Player extends Character {
      * @param dy the y-coordinate to move to
      * @param enemies List of all enemies on the map
      * @param items List of all items on the map
+     * @see barfightsimulator.domain.Player#interact(int, int, java.util.List)
+     * @see barfightsimulator.domain.Player#equip(barfightsimulator.domain.Item) 
      */
     public void move(int dx, int dy, List<Enemy> enemies, List<Item> items) {
         
@@ -54,7 +57,8 @@ public class Player extends Character {
      * @param x requested x-coordinate
      * @param y requested y-coordinate
      * @param enemies list of all enemies on current map.
-     * @return 
+     * @see barfightsimulator.domain.Player#attack(barfightsimulator.domain.Enemy) 
+     * @return true if enemy found at given coordinates, otherwise false
      */
     public boolean interact(int x, int y, List<Enemy> enemies) {
         

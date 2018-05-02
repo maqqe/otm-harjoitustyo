@@ -51,8 +51,9 @@ public class Enemy extends Character {
     }
     
     /**
-     * First calls upon the isNextToPlayer() method to ascertain whether player
+     * First calls upon the isNextToPlayer method to ascertain whether player
      * is adjacent. If yes, reduces the Player's hit points by 1.
+     * @see barfightsimulator.domain.Enemy#isNextToPlayer() 
      */
     public void attack() {
         if (isNextToPlayer() && alive) {
