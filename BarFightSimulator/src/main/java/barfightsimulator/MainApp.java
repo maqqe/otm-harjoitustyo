@@ -24,10 +24,15 @@ import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -39,69 +44,114 @@ import javafx.stage.Stage;
  */
 public class MainApp extends Application {
     
+    private Scene gameCompletedScene;
+    private Scene gameOverScene;
     private MissionLoader loader;
+    
     
     @Override
     public void init() throws Exception {
         LocalizableObjectDao dao = new LocalizableObjectDao();
         loader = new MissionLoader(dao);
+        loader.loadMission(1);
+        
+        
+        Label gameOverLabel = new Label("Game over, chump");
+        Pane gameOverPane = new Pane(gameOverLabel);        
+        this.gameOverScene = new Scene(gameOverPane, 800, 600);
+        
+        Label gameCompletedLabel = new Label("All missions completed, congratulations!");
+        Pane gameCompletedPane = new Pane(gameCompletedLabel);
+        this.gameCompletedScene = new Scene(gameCompletedPane, 800, 600);
     }
     
-    @Override
-    public void start(Stage primaryStage) {
-        
-        VBox vbox = new VBox();
-        vbox.getChildren().add(0, new Text(new String(loader.drawName())));
-        vbox.getChildren().add(1, new Text(new String(loader.drawName())));
-        GridPane pane = new GridPane();
-        ColumnConstraints constraints = new ColumnConstraints(15);
-        for (int i = 0; i < 20; i++) {
-            pane.getColumnConstraints().add(constraints);
-        }
-        vbox.getChildren().add(2, pane);
+    public void drawLocalizableObjects(GridPane pane) {
         for (int x = 0; x < 20; x++) {
             for (int y = 0; y < 20; y++) {
                 pane.add(new Text("."), x, y);
             }
         }
         pane.add(new Text("@"), loader.getPlayer().getX(), loader.getPlayer().getY());
+        for (Enemy e : loader.getEnemies()) {
+            if (e.isAlive()) {
+                pane.add(new Text("e"), e.getX(), e.getY());
+            }
+                    
+        }
         
-        Scene scene = new Scene(vbox,800, 600);
+        if (loader.getItems()!= null) {
+            for (Item i : loader.getItems()) {
+                if (!i.isEquipped()) {
+                        
+                    if (i.getItemtype() == Itemtype.BEER) {
+                        pane.add(new Text("b"), i.getX(), i.getY()); 
+                    } else if (i.getItemtype() == Itemtype.KNIFE) {
+                        pane.add(new Text("k"), i.getX(), i.getY());
+                    }
+                }                
+            }
+        }
+    }
+    
+    
+    
+    @Override
+    public void start(Stage primaryStage) {
+        
+        VBox vbox = new VBox();
+        GridPane pane = new GridPane();
+        ColumnConstraints constraints = new ColumnConstraints(15);
+        HBox commandBox = new HBox();
+        Label commandText = new Label("Command: ");
+        TextField commandField = new TextField();
+        commandBox.getChildren().addAll(commandText, commandField);
+        Label playerStatus = new Label();
+        Label playerItem = new Label();
+        
+        
+        
+        for (int i = 0; i < 20; i++) {
+            pane.getColumnConstraints().add(constraints);
+        }
+        
+        drawLocalizableObjects(pane);
+        
+        vbox.getChildren().add(0, pane);
+        vbox.getChildren().add(1, commandBox);
+        vbox.getChildren().add(2, playerStatus);
+        vbox.getChildren().add(3, playerItem);
+        
+        commandField.setOnAction(e -> {
+            
+            pane.getChildren().clear();
+            loader.playTurn(commandField.getText());
+            
+            if (!loader.isOngoing()) {
+                primaryStage.setScene(gameOverScene);
+                primaryStage.show();
+                return;
+            }
+            
+            if (loader.isAllMissionsCompleted()) {
+                primaryStage.setScene(gameCompletedScene);
+                primaryStage.show();
+            }
+            
+            drawLocalizableObjects(pane);
+            commandField.clear();
+            playerStatus.setText("Your hit points: " + loader.getPlayer().getHitpoints());
+            if (loader.getPlayer().getItem() != null) {
+                playerItem.setText("You hold a " + loader.getPlayer().getItem().getItemtype().toString());
+            } else {
+                playerItem.setText("You hold no item");
+            }
+        });
+        
+        Scene scene = new Scene(vbox, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
-//        Button btn = new Button();
-//        btn.setText("Say 'Hello World'");
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//            
-//            @Override
-//            public void handle(ActionEvent event) {
-//                System.out.println("Hello World!");
-//            }
-//        });
-//        
-//        StackPane root = new StackPane();
-//        root.getChildren().add(btn);
-//        
-//        Scene scene = new Scene(root, 300, 250);
-//        
-//        primaryStage.setTitle("Hello World!");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
+        
     }
-
-//public class MainApp extends Application {
-
-//    @Override
-//    public void start(Stage stage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-//        
-//        Scene scene = new Scene(root);
-//        scene.getStylesheets().add("/styles/Styles.css");
-//        
-//        stage.setTitle("JavaFX and Maven");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
@@ -112,15 +162,8 @@ public class MainApp extends Application {
      * @param args the command line arguments
      */
 
-//public class MainApp {
-    
+
     public static void main(String[] args) throws Exception {
         launch(args);
-            
-//        Scanner reader = new Scanner(System.in);
-//        LocalizableObjectDao dao = new LocalizableObjectDao();
-//        MissionLoader ml = new MissionLoader(dao);
-//        Ui ui = new Ui(reader, ml);
-//        ui.start();
     }
 }

@@ -17,7 +17,7 @@ public class Enemy extends Character {
     public Enemy(int x, int y, Player player, String name) {
         super(x, y);
         this.player = player;
-        this.hitpoints = 5;
+        this.hitpoints = 2;
         this.name = name;
     }
     

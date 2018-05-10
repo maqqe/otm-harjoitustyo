@@ -91,8 +91,8 @@ public class Ui {
                 System.out.println("");
                 System.out.println("Items at: ");
 
-                if (items != null) {
-                    items.stream().filter(item -> item.isEquipped() == false).forEach(System.out::println);
+                if (loader.getItems() != null) {
+                    loader.getItems().stream().filter(item -> item.isEquipped() == false).forEach(System.out::println);
                 }
 
 

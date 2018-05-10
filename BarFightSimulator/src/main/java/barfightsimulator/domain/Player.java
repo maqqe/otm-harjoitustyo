@@ -63,7 +63,7 @@ public class Player extends Character {
     public boolean interact(int x, int y, List<Enemy> enemies) {
         
         for (Enemy e : enemies) {
-            if (e.getX() == x && e.getY() == y) {
+            if (e.getX() == x && e.getY() == y && e.isAlive()) {
                 attack(e);
                 return true;
             }

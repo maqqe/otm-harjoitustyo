@@ -25,6 +25,11 @@ public class MissionLoader {
     private Random rng;
     private List<String> names;
     private int missions;
+    private List<Enemy> enemies;
+    private List<Item> items;
+    private int mission;
+    private boolean ongoing;
+    private boolean allMissionsCompleted;
     
     public MissionLoader(LocalizableObjectDao dao) {
         localizableObjectDao = dao;
@@ -32,14 +37,98 @@ public class MissionLoader {
         this.rng = new Random();
         this.names = dao.getNames();
         this.missions = dao.getNumberOfMissions();
+        this.enemies = new ArrayList();
+        this.items = new ArrayList();
+        this.mission = 1;
+        this.ongoing = true;
+        this.allMissionsCompleted = false;
     }
     
     public Player getPlayer() {
         return this.player;
     }
     
+    public boolean isAllMissionsCompleted() {
+        return this.allMissionsCompleted;
+    }
+    
+    public boolean isOngoing() {
+        return this.ongoing;
+    }
+    
+    public void setOngoing(boolean ongoing) {
+        this.ongoing = ongoing;
+    }
+    
     public int getNumberOfMissions() {
         return this.missions;
+    }
+    
+    public void playTurn(String command) {
+        if (command.equals("1")) {
+            
+            getPlayer().move(getPlayer().getX() - 1, getPlayer().getY() - 1, enemies, items);
+        } else if (command.equals("2")) {
+            getPlayer().move(getPlayer().getX(), getPlayer().getY() - 1, enemies, items);
+        } else if (command.equals("3")) {
+            getPlayer().move(getPlayer().getX() + 1, getPlayer().getY() - 1, enemies, items);
+        } else if (command.equals("4")) {
+            getPlayer().move(getPlayer().getX() - 1, getPlayer().getY(), enemies, items);
+        } else if (command.equals("5")) {
+            getPlayer().move(getPlayer().getX(), getPlayer().getY(), enemies, items);
+        } else if (command.equals("6")) {
+            getPlayer().move(getPlayer().getX() + 1, getPlayer().getY(), enemies, items);
+        } else if (command.equals("7")) {
+            getPlayer().move(getPlayer().getX() - 1, getPlayer().getY() + 1, enemies, items);
+        } else if (command.equals("8")) {
+            getPlayer().move(getPlayer().getX(), getPlayer().getY() + 1, enemies, items);
+        } else if (command.equals("9")) {
+            getPlayer().move(getPlayer().getX() + 1, getPlayer().getY() + 1, enemies, items);
+        } else if (command.equals("0")) {
+            if (getPlayer().getItem() != null) {
+                getPlayer().use();
+            }
+        } else {
+            return;
+        }
+        
+        if (enemies.stream().filter(Enemy::isAlive).count() == 0 && this.mission < getNumberOfMissions()) {
+            this.mission++;
+            enemies = getEnemyList(mission - 1);
+            items = getItemList(mission - 1);
+            getPlayer().setHitpoints(10);
+            getPlayer().setX(10);
+            getPlayer().setY(10);
+            
+        } else if ((enemies.stream().filter(Enemy::isAlive).count() == 0 && this.mission == getNumberOfMissions())) {
+            this.allMissionsCompleted = true;
+        }
+        
+        
+        for (Enemy e : enemies) {
+            e.attack();
+            e.chase(getPlayer().getX(), getPlayer().getY());
+        }
+        
+        if (getPlayer().getHitpoints() <= 0) {
+            
+            this.ongoing = false;
+            
+        }
+    }
+    
+    public List<Enemy> getEnemies() {
+        return this.enemies;
+    }
+    
+    public List<Item> getItems() {
+        return this.items;
+    }
+    
+    public void loadMission(int mission) {
+        this.enemies = getEnemyList(mission - 1);
+        this.items = getItemList(mission - 1);
+        this.player = new Player(9, 9);
     }
     
     /**

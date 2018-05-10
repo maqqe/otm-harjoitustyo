@@ -96,14 +96,6 @@ public class PlayerTest {
         assertEquals(player.toString(), "[0, 0]");
     }
     
-//    @Test
-//    public void searchAdjacentTilesFindsAdjacentLocalizableObjects() {
-//        Enemy e = new Enemy(1, 1, player, "test");
-//        List<LocalizableObject> objects = new ArrayList<>();
-//        objects.add(e);
-//        objects.add(player);
-//        assertEquals(2, player.searchAdjacentTiles(objects).size());
-//    }
     
     @Test
     public void interactAttacksIfEnemyAtTile() {
@@ -111,7 +103,7 @@ public class PlayerTest {
         
         enemies.add(e);
         player.interact(0, 1, enemies);
-        assertEquals(4, e.getHitpoints());
+        assertEquals(1, e.getHitpoints());
     }
     
     @Test
@@ -120,7 +112,7 @@ public class PlayerTest {
         player.equip(knife);
         enemies.add(e);
         player.interact(0, 1, enemies);
-        assertEquals(2, e.getHitpoints());
+        assertEquals(-1, e.getHitpoints());
     }
     
     @Test

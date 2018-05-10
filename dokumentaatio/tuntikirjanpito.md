@@ -11,7 +11,10 @@ Päivämäärä | Tunnit | Aktiviteetti
 28.4. | 2 | Lisätty featureja
 31.4. | 2 | Lisätty featureja
 1.5. | 3 | Säädetty tekstikäyttöjärjestelmää, muokattu tietojenkäsittelyä
-2.5. | 3 | FXML harjoittelua, JavaDoc, käyttöohje
+2.5. | 3 | JavaFX harjoittelua, JavaDoc, käyttöohje
+7.5. | 2 | JavaFX harjoittelua, graafisen käyttiksen suunnittelua
+8.5. | 2 | -"-
+9.5. | 1 | -"-
+10.5. | 2 | Graafisen käyttöliittymän implementaatio, vastuiden siirto luokkien välillä
 
-
-Summa: 27 h
+Summa: 34 h
