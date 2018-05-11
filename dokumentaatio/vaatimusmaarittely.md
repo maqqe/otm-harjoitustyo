@@ -23,7 +23,7 @@ Sovellus koostuu yhdestä näkymästä, joka sisältää pelialueen, mahdollista
 * Tietokonevastustajilla on tekoäly, jonka puitteissa ne toimivat
 * Hahmojen on mahdollista suorittaa erinäisiä toimintoja, kuten hyökkääminen ja liikkuminen.
 * Pelaaminen tapahtuu näppäimistöllä
-* Vastustajahahmoilla on nimet, jotka haetaan tiedostosta tai tietokannasta. Nimilista on pelaajien vapaasti muokattavissa.
+* Vastustajahahmoilla on nimet, jotka haetaan tiedostosta tai tietokannasta.
 * Pelin voi voittaa nujertamalla vastustajat
   * Vastavuoroisesti pelin häviää, jos vastustajat nujertavat pelaajan
 * Pelissä on useampia ratoja (kenttiä), jotka poikkeavat toisistaan
