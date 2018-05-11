@@ -88,5 +88,9 @@ public abstract class Character extends LocalizableObject {
             return this.item;
         }
         return null;
-    } 
+    }
+    
+    public void setItem(Item item) {
+        this.item = item;
+    }
 }

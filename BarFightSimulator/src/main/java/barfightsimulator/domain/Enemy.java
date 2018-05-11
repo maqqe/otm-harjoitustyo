@@ -5,6 +5,9 @@
  */
 package barfightsimulator.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Markus
@@ -13,12 +16,14 @@ public class Enemy extends Character {
 
     private Player player;
     private String name;
+    private List<Enemy> enemies;
     
     public Enemy(int x, int y, Player player, String name) {
         super(x, y);
         this.player = player;
         this.hitpoints = 2;
         this.name = name;
+        this.enemies = new ArrayList<>();
     }
     
     /**
@@ -28,16 +33,25 @@ public class Enemy extends Character {
      */
     public void chase(int x, int y) {
         if (alive) {
+            
+            int newX = this.x;
+            int newY = this.y;
+            
             if (this.x < x - 1) {
-                this.x += 1;
+                newX = this.x + 1;
             } else if (this.x > x + 1) {
-                this.x -= 1;
+                newX = this.x - 1;
             }
 
             if (this.y < y - 1) {
-                this.y += 1;
+                newY = this.y + 1;
             } else if (this.y > y + 1) {
-                this.y -= 1;
+                newY = this.y - 1;
+            }
+            
+            if (!checkIfTileOccupied(newX, newY)) {
+                this.x = newX;
+                this.y = newY;
             }
         }
     }
@@ -48,6 +62,19 @@ public class Enemy extends Character {
      */
     public boolean isNextToPlayer() {
         return Math.abs(this.x - player.getX()) <= 1 && Math.abs(this.y - player.getY()) <= 1;
+    }
+    
+    public void setEnemyList(List<Enemy> enemies) {
+        this.enemies = enemies;
+    }
+    
+    public boolean checkIfTileOccupied(int x, int y) {
+        for (Enemy e : enemies) {
+            if (e.getX() == x && e.getY() == y) {
+                return true;
+            }
+        }
+        return false;
     }
     
     /**

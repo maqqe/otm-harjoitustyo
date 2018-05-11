@@ -24,10 +24,12 @@ import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -37,6 +39,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.swing.text.html.CSS;
 
 /**
  *
@@ -98,7 +101,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         
-        VBox vbox = new VBox();
+        GridPane gamePane = new GridPane();
         GridPane pane = new GridPane();
         ColumnConstraints constraints = new ColumnConstraints(15);
         HBox commandBox = new HBox();
@@ -107,7 +110,32 @@ public class MainApp extends Application {
         commandBox.getChildren().addAll(commandText, commandField);
         Label playerStatus = new Label();
         Label playerItem = new Label();
-        
+        TextArea commandTable = new TextArea("Commands:\n"
+                + "1 - move down and left\n"
+                + "2 - move down\n"
+                + "3 - move down and right\n"
+                + "4 - mova left\n"
+                + "5 - hold at current position\n"
+                + "6 - move right\n"
+                + "7 - move up and left\n"
+                + "8 - move up\n"
+                + "9 - move up and right\n"
+                + "0 - use item\n\n\n"
+                + "@ - you\n"
+                + "e - enemy\n"
+                + "k - knife\n"
+                + "b - beer");
+        commandTable.setEditable(false);
+        TextArea instructions = new TextArea("Your objective is to kill all the bad guys.\n"
+                + "You attack an enemy by trying to move into the same tile.\n"
+                + "You move by typing an appropriate number into command textfield\n"
+                + "and pressing the enter key.\n"
+                + "Enemies have two hitpoints.\n"
+                + "You can pick up one item at maximum.\n"
+                + "Using beer increases your hitpoints by 1.\n"
+                + "Knife instakills enemies.");
+        instructions.setEditable(false);
+                
         
         
         for (int i = 0; i < 20; i++) {
@@ -115,11 +143,20 @@ public class MainApp extends Application {
         }
         
         drawLocalizableObjects(pane);
+        playerStatus.setText("Your hit points: " + loader.getPlayer().getHitpoints());
+        playerItem.setText("You hold no item");
         
-        vbox.getChildren().add(0, pane);
-        vbox.getChildren().add(1, commandBox);
-        vbox.getChildren().add(2, playerStatus);
-        vbox.getChildren().add(3, playerItem);
+        gamePane.setPadding(new Insets(10, 10, 10, 10));
+        gamePane.setVgap(10);
+        gamePane.setHgap(10);
+        
+        gamePane.add(pane, 0, 0);
+        gamePane.add(commandBox, 0, 1);
+        gamePane.add(playerStatus, 0, 2);
+        gamePane.add(playerItem, 0, 3);
+        gamePane.add(commandTable, 1, 0);
+        gamePane.add(instructions, 1, 1);
+        
         
         commandField.setOnAction(e -> {
             
@@ -147,7 +184,7 @@ public class MainApp extends Application {
             }
         });
         
-        Scene scene = new Scene(vbox, 800, 600);
+        Scene scene = new Scene(gamePane, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
         

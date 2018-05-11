@@ -38,8 +38,14 @@ public class Player extends Character {
             return;
         }
         
-        this.x = dx;
-        this.y = dy;
+        if (dx >= 0 && dx < 20) {
+            this.x = dx;
+        }
+        
+        if (dy >= 0 && dy < 20) {
+            this.y = dy;
+        }
+        
         if (items != null) {
             for (Item i : items) {
                 if (i.getX() == dx && i.getY() == dy && this.item == null) {

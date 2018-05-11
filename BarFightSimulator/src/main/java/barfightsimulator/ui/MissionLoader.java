@@ -65,12 +65,12 @@ public class MissionLoader {
     }
     
     public void playTurn(String command) {
-        if (command.equals("1")) {
+        if (command.equals("7")) {
             
             getPlayer().move(getPlayer().getX() - 1, getPlayer().getY() - 1, enemies, items);
-        } else if (command.equals("2")) {
+        } else if (command.equals("8")) {
             getPlayer().move(getPlayer().getX(), getPlayer().getY() - 1, enemies, items);
-        } else if (command.equals("3")) {
+        } else if (command.equals("9")) {
             getPlayer().move(getPlayer().getX() + 1, getPlayer().getY() - 1, enemies, items);
         } else if (command.equals("4")) {
             getPlayer().move(getPlayer().getX() - 1, getPlayer().getY(), enemies, items);
@@ -78,11 +78,11 @@ public class MissionLoader {
             getPlayer().move(getPlayer().getX(), getPlayer().getY(), enemies, items);
         } else if (command.equals("6")) {
             getPlayer().move(getPlayer().getX() + 1, getPlayer().getY(), enemies, items);
-        } else if (command.equals("7")) {
+        } else if (command.equals("1")) {
             getPlayer().move(getPlayer().getX() - 1, getPlayer().getY() + 1, enemies, items);
-        } else if (command.equals("8")) {
+        } else if (command.equals("2")) {
             getPlayer().move(getPlayer().getX(), getPlayer().getY() + 1, enemies, items);
-        } else if (command.equals("9")) {
+        } else if (command.equals("3")) {
             getPlayer().move(getPlayer().getX() + 1, getPlayer().getY() + 1, enemies, items);
         } else if (command.equals("0")) {
             if (getPlayer().getItem() != null) {
@@ -99,6 +99,7 @@ public class MissionLoader {
             getPlayer().setHitpoints(10);
             getPlayer().setX(10);
             getPlayer().setY(10);
+            getPlayer().setItem(null);
             
         } else if ((enemies.stream().filter(Enemy::isAlive).count() == 0 && this.mission == getNumberOfMissions())) {
             this.allMissionsCompleted = true;
@@ -147,6 +148,11 @@ public class MissionLoader {
             String[] enemyLocation = enemyLocations[i].split(",");
             enemies.add(new Enemy(Integer.parseInt(enemyLocation[0]), Integer.parseInt(enemyLocation[1]), player, drawName()));
         }
+        
+        for (Enemy e : enemies) {
+            e.setEnemyList(enemies);
+        }
+        
         return enemies;
     }
     
