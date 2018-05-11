@@ -80,4 +80,9 @@ public class EnemyTest {
         enemy.attack();
         assertFalse(player.isAlive());
     }
+    
+    @Test
+    public void toStringReturnsCorrectString() {
+        assertEquals("[2, 3] test, 2 hp", enemy.toString());
+    }
 }

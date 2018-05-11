@@ -139,6 +139,7 @@ public class MainApp extends Application {
                 + "You move by typing an appropriate number into command textfield\n"
                 + "and pressing the enter key.\n"
                 + "Enemies have two hitpoints.\n"
+                + "Wounded enemies are shown in red.\n"
                 + "You can pick up one item at maximum.\n"
                 + "Using beer increases your hitpoints by 1.\n"
                 + "Knife instakills enemies.");

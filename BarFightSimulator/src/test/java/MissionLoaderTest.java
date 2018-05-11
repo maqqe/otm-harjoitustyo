@@ -164,17 +164,17 @@ public class MissionLoaderTest {
         assertNull(ml.getPlayer().getItem());
     }
     
-//    @Test
-//    public void setEnemiesSetsEnemyList() {
-//        ml.setEnemies(null);
-//        assertNull(ml.getEnemies());
-//    }
-//    
-//    @Test
-//    public void setItemsSetsItemList() {
-//        ml.setItems(null);
-//        assertNull(ml.getItems());
-//    }
+    @Test
+    public void setEnemiesSetsEnemyList() {
+        ml.setEnemies(null);
+        assertNull(ml.getEnemies());
+    }
+    
+    @Test
+    public void setItemsSetsItemList() {
+        ml.setItems(null);
+        assertNull(ml.getItems());
+    }
     
     @Test
     public void faultyCommandInputDoesNotProgressGame() {

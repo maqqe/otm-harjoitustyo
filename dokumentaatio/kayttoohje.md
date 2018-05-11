@@ -4,12 +4,18 @@ Lataa .jar
 
 ### Konfigurointi
 
+Ohjelma olettaa, että hakemistosta löytyy tiedosto config.properties sekä kyseisestä tiedostosta löytyvät .txt tiedostot.
+
+> itemLocationsFile=itemlocations.txt
+> enemyLocationsFile=enemylocations.txt
+> enemyNameFile=names.txt
+
 ### Pelin käynnistäminen
 
 Ohjelma käynnistetään komennolla java -jar barfightsimulator.jar
 
 ### Pelaaminen
 
-Peli tulostaa peliohjeet käynnistettäessä, mutta lyhyesti:
-Tekstikäyttöjärjestelmällä pelaaminen tapahtuu syöttämällä numero (numero + enter) väliltä 0-9. Numerot 1-9 liikuttavat pelaajaa numpadin osoittamaan suuntaan. Numero 0 käyttää pelaajan esineen. Vihollisia vastaan voi hyökätä liikkumalla samoihin koordinaatteihin.
+Peli käynnistyy automaattisesti. Pelaaminen tapahtuu annettujen ohjeiden mukaisesti näppäimistöllä.
+Pelissä on kolme rataa. Peli ilmoittaa, mikäli tehtävät on suoritettu onnistuneesti. Peli myös ilmoittaa, jos häviät pelin. Molemmissa tapauksissa uudelleen pelataksesi on peli käynnistettävä uudestaan.
 
