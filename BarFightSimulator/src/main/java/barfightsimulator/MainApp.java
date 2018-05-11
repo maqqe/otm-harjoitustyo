@@ -37,6 +37,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.text.html.CSS;
@@ -54,7 +55,7 @@ public class MainApp extends Application {
     
     @Override
     public void init() throws Exception {
-        LocalizableObjectDao dao = new LocalizableObjectDao();
+        LocalizableObjectDao dao = new LocalizableObjectDao("config.properties");
         loader = new MissionLoader(dao);
         loader.loadMission(1);
         
@@ -77,7 +78,14 @@ public class MainApp extends Application {
         pane.add(new Text("@"), loader.getPlayer().getX(), loader.getPlayer().getY());
         for (Enemy e : loader.getEnemies()) {
             if (e.isAlive()) {
-                pane.add(new Text("e"), e.getX(), e.getY());
+                if (e.getHitpoints() == 2) {
+                    pane.add(new Text("e"), e.getX(), e.getY());
+                } else {
+                    Text t = new Text("e");
+                    t.setFill(Color.RED);
+                    pane.add(t, e.getX(), e.getY());
+                }
+                
             }
                     
         }
@@ -111,16 +119,16 @@ public class MainApp extends Application {
         Label playerStatus = new Label();
         Label playerItem = new Label();
         TextArea commandTable = new TextArea("Commands:\n"
-                + "1 - move down and left\n"
-                + "2 - move down\n"
-                + "3 - move down and right\n"
-                + "4 - mova left\n"
-                + "5 - hold at current position\n"
-                + "6 - move right\n"
-                + "7 - move up and left\n"
-                + "8 - move up\n"
-                + "9 - move up and right\n"
-                + "0 - use item\n\n\n"
+                + "z - move down and left\n"
+                + "x - move down\n"
+                + "c - move down and right\n"
+                + "a - mova left\n"
+                + "s - hold at current position\n"
+                + "d - move right\n"
+                + "q - move up and left\n"
+                + "w - move up\n"
+                + "e - move up and right\n"
+                + "u - use item\n\n\n"
                 + "@ - you\n"
                 + "e - enemy\n"
                 + "k - knife\n"

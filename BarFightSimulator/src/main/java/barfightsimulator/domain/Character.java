@@ -93,4 +93,8 @@ public abstract class Character extends LocalizableObject {
     public void setItem(Item item) {
         this.item = item;
     }
+    
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
 }

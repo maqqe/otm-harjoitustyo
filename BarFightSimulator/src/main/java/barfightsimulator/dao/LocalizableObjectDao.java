@@ -23,11 +23,11 @@ public class LocalizableObjectDao {
     private Properties properties;
 
     
-    public LocalizableObjectDao() {
+    public LocalizableObjectDao(String properties) {
         this.properties = new Properties();
         
         try {
-            this.properties.load(new FileInputStream("config.properties"));
+            this.properties.load(new FileInputStream(properties));
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }        
@@ -50,6 +50,7 @@ public class LocalizableObjectDao {
             }
         } catch (Exception e) {
             System.out.println("Error: " + e);
+            return 1;
         }
         return enemyLocationList.size();
     }
@@ -71,6 +72,9 @@ public class LocalizableObjectDao {
             }
         } catch (Exception e) {
             System.out.println("Error: " + e);
+            String defaults[] = new String[1];
+            defaults[0] = "1,1";
+            return defaults;
         }
         
         return enemyLocationList.get(map).split(";");
@@ -121,9 +125,16 @@ public class LocalizableObjectDao {
             }
         } catch (Exception e) {
             System.out.println("Error: " + e);
+            String defaults[] = new String[1];
+            defaults[0] = "noItems";
+            return defaults;
         }
         
         return itemLocationList.get(map).split(";");
+    }
+    
+    public void setProperties(Properties properties) {
+        this.properties = properties;
     }
     
     

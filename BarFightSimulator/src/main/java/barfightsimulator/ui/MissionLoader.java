@@ -65,26 +65,26 @@ public class MissionLoader {
     }
     
     public void playTurn(String command) {
-        if (command.equals("7")) {
+        if (command.equals("q")) {
             
             getPlayer().move(getPlayer().getX() - 1, getPlayer().getY() - 1, enemies, items);
-        } else if (command.equals("8")) {
+        } else if (command.equals("w")) {
             getPlayer().move(getPlayer().getX(), getPlayer().getY() - 1, enemies, items);
-        } else if (command.equals("9")) {
+        } else if (command.equals("e")) {
             getPlayer().move(getPlayer().getX() + 1, getPlayer().getY() - 1, enemies, items);
-        } else if (command.equals("4")) {
+        } else if (command.equals("a")) {
             getPlayer().move(getPlayer().getX() - 1, getPlayer().getY(), enemies, items);
-        } else if (command.equals("5")) {
+        } else if (command.equals("s")) {
             getPlayer().move(getPlayer().getX(), getPlayer().getY(), enemies, items);
-        } else if (command.equals("6")) {
+        } else if (command.equals("d")) {
             getPlayer().move(getPlayer().getX() + 1, getPlayer().getY(), enemies, items);
-        } else if (command.equals("1")) {
+        } else if (command.equals("z")) {
             getPlayer().move(getPlayer().getX() - 1, getPlayer().getY() + 1, enemies, items);
-        } else if (command.equals("2")) {
+        } else if (command.equals("x")) {
             getPlayer().move(getPlayer().getX(), getPlayer().getY() + 1, enemies, items);
-        } else if (command.equals("3")) {
+        } else if (command.equals("c")) {
             getPlayer().move(getPlayer().getX() + 1, getPlayer().getY() + 1, enemies, items);
-        } else if (command.equals("0")) {
+        } else if (command.equals("u")) {
             if (getPlayer().getItem() != null) {
                 getPlayer().use();
             }
@@ -127,6 +127,7 @@ public class MissionLoader {
     }
     
     public void loadMission(int mission) {
+        this.mission = mission;
         this.enemies = getEnemyList(mission - 1);
         this.items = getItemList(mission - 1);
         this.player = new Player(9, 9);
@@ -189,5 +190,16 @@ public class MissionLoader {
         return names.get(rng.nextInt(names.size()));
     }
     
+    public int getMission() {
+        return this.mission;
+    }
+    
+    public void setEnemies(List<Enemy> enemies) {
+        this.enemies = enemies;
+    }
+    
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
     
 }
