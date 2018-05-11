@@ -16,5 +16,6 @@ Päivämäärä | Tunnit | Aktiviteetti
 8.5. | 2 | -"-
 9.5. | 1 | -"-
 10.5. | 2 | Graafisen käyttöliittymän implementaatio, vastuiden siirto luokkien välillä
+11.5. | 7 | Sovelluslogiikan ja käyttiksen säätö, testien kirjoitus, dokumentaatio
 
-Summa: 34 h
+Summa: 41 h

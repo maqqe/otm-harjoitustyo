@@ -13,6 +13,9 @@ A game about drinking beer and crushing your enemies while you're at it.
 
 [Arkkitehtuuri](https://github.com/maqqe/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/maqqe/otm-harjoitustyo/blob/master/dokumentaatio/testausdokumentti.md)
+
+
 ## Releaset
 
 [Viikko 5](https://github.com/maqqe/otm-harjoitustyo/releases/tag/Viikko5)
