@@ -64,6 +64,11 @@ public class MissionLoader {
         return this.missions;
     }
     
+    /**
+     * Plays a turn. First, moves player if possible or attacks enemy. Then, ends game if all enemies dead. Then, moves enemies and makes them attack if possible. Then ends game if player dead.
+     * @param command requested command
+     */
+    
     public void playTurn(String command) {
         if (command.equals("q")) {
             
@@ -125,6 +130,11 @@ public class MissionLoader {
     public List<Item> getItems() {
         return this.items;
     }
+    
+    /**
+     * Loads a mission. Changes object parameters to reflect new mission.
+     * @param mission number of mission
+     */
     
     public void loadMission(int mission) {
         this.mission = mission;

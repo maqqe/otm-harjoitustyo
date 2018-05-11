@@ -27,7 +27,7 @@ public class Enemy extends Character {
     }
     
     /**
-     * Moves the Enemy directly towards Player.
+     * Moves the Enemy directly towards Player. Will not move if the optimal tile is already occupied.
      * @param x Player's x-coordinate
      * @param y Player's y-coordinate
      */
@@ -67,6 +67,13 @@ public class Enemy extends Character {
     public void setEnemyList(List<Enemy> enemies) {
         this.enemies = enemies;
     }
+    
+    /**
+     * Checks whether an enemy already resides at the provided coordinates.
+     * @param x x-coordinate
+     * @param y y-coordinate
+     * @return 
+     */
     
     public boolean checkIfTileOccupied(int x, int y) {
         for (Enemy e : enemies) {
