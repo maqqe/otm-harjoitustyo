@@ -65,7 +65,9 @@ public class MissionLoader {
     }
     
     /**
-     * Plays a turn. First, moves player if possible or attacks enemy. Then, ends game if all enemies dead. Then, moves enemies and makes them attack if possible. Then ends game if player dead.
+     * Plays a turn. First, moves player if possible or attacks enemy. Then, 
+     * ends game if all enemies dead. Then, moves enemies and makes them 
+     * attack if possible. Then ends game if player dead.
      * @param command requested command
      */
     
@@ -138,9 +140,10 @@ public class MissionLoader {
     
     public void loadMission(int mission) {
         this.mission = mission;
+        this.player = new Player(9, 9);
         this.enemies = getEnemyList(mission - 1);
         this.items = getItemList(mission - 1);
-        this.player = new Player(9, 9);
+        
     }
     
     /**
