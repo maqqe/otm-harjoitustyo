@@ -1,21 +1,19 @@
-# Käyttöohje
+# Instructions
 
-Lataa .jar
+Load the .jar
 
-### Konfigurointi
+### Configuration
 
-Ohjelma olettaa, että hakemistosta löytyy tiedosto config.properties sekä kyseisestä tiedostosta löytyvät .txt tiedostot.
+The program assumes, that a file config.properties is present in the folder and that the following .txt files are listed in the file.
 
 > itemLocationsFile=itemlocations.txt
 > enemyLocationsFile=enemylocations.txt
 > enemyNameFile=names.txt
 
-### Pelin käynnistäminen
+### Running the program
 
-Ohjelma käynnistetään komennolla java -jar barfightsimulator.jar
+Program is run by executing command java -jar barfightsimulator.jar
 
-### Pelaaminen
+### Playing the game
 
-Peli käynnistyy automaattisesti. Pelaaminen tapahtuu annettujen ohjeiden mukaisesti näppäimistöllä.
-Pelissä on kolme rataa. Peli ilmoittaa, mikäli tehtävät on suoritettu onnistuneesti. Peli myös ilmoittaa, jos häviät pelin. Molemmissa tapauksissa uudelleen pelataksesi on peli käynnistettävä uudestaan.
-
+The game starts automatically. The game is played by issuing commands listed in the GUI using the keyboard. There are three levels in the game. The game will let you know if you manage to finish all the levels. The game will likewise let you know if you lose the game. In both cases, restart the game if you want to play again.
