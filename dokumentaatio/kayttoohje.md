@@ -7,7 +7,9 @@ Load the .jar
 The program assumes, that a file config.properties is present in the folder and that the following .txt files are listed in the file.
 
 > itemLocationsFile=itemlocations.txt
+
 > enemyLocationsFile=enemylocations.txt
+
 > enemyNameFile=names.txt
 
 ### Running the program
