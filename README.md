@@ -2,10 +2,7 @@
 
 A game about drinking beer and crushing your enemies while you're at it.
 
-
-## Dokumentaatio
-
-[Käyttöohje](https://github.com/maqqe/otm-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+[Instructions](https://github.com/maqqe/otm-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 
 ## Command line commands
